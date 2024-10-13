@@ -10,7 +10,7 @@ env_vars = {
   # Logs Channel Username Without @
   "CACHE_CHANNEL": "",
   # Force Subs Channel username without @
-  "CHANNEL": "Manga_Campus",
+  "CHANNEL": "",
   # {chap_num}: Chapter Number
   # {chap_name} : Manga Name
   # Ex : Chapter {chap_num} {chap_name} @Manhwa_Arena
