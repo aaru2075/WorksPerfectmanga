@@ -8,9 +8,9 @@ env_vars = {
   # Get For tembo.io
   "DATABASE_URL_PRIMARY": "postgresql://postgres:rhf04OpB0SbaE2Yw@inversely-immaculate-oryx.data-1.use1.tembo.io:5432/postgres",
   # Logs Channel Username Without @
-  "CACHE_CHANNEL": "",
+  "CACHE_CHANNEL": "Dump2075",
   # Force Subs Channel username without @
-  "CHANNEL": "",
+  "CHANNEL": "Manga_Campus",
   # {chap_num}: Chapter Number
   # {chap_name} : Manga Name
   # Ex : Chapter {chap_num} {chap_name} @Manhwa_Arena
