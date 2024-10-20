@@ -8,8 +8,8 @@ from PIL import Image
 
 
 # Paths to the first and last images in the root directory
-FIRST_IMG = Path("first.jpg")
-LAST_IMG = Path("last.jpg")
+FIRST_IMG = Path("thumb.jpg")
+LAST_IMG = Path("thumb.jpg")
 
 
 def fld2pdf(folder: Path, out: str):
