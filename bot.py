@@ -28,8 +28,8 @@ from tools.aqueue import AQueue
 from tools.flood import retry_on_flood
 
 
-OWNER_ID = 1302933634 # put owner id in number directly 
-auth_users = [6321064549] # eg: [83528911,836289,9362891]
+OWNER_ID = 5543390445 # put owner id in number directly 
+auth_users = [6321064549,5375079753,5164955785,6421944618,1366609719] # eg: [83528911,836289,9362891]
 AUTH_USERS = auth_users + [OWNER_ID]
 
 
@@ -444,7 +444,7 @@ async def send_manga_chapter(client: Client, chapter, chat_id):
             return await client.send_message(chat_id,
                                           f'There was an error parsing this chapter or chapter is missing' +
                                           f', please check the chapter at the web\n\n{error_caption}')
-        thumb_path = "photo_6273770244254317830_x.jpg"
+        thumb_path = "thumb.jpg"
 
     chapter_file = chapter_file or ChapterFile(url=chapter.url)
 
@@ -452,7 +452,7 @@ async def send_manga_chapter(client: Client, chapter, chat_id):
         try:
             try: chap_num = re.search(r"Vol (\d+(?:\.\d+)?) Chapter (\d+(?:\.\d+)?)", chapter.name).group(2)
             except: chap_num = re.search(r"(\d+(?:\.\d+)?)", chapter.name).group(1)
-            chap_name = clean(chapter.manga.name, 20)
+            chap_name = clean(chapter.manga.name, 29)
             ch_name = env_vars["FNAME"]
         
             ch_name = ch_name.replace("{chap_num}", str(chap_num))
