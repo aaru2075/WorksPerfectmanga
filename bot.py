@@ -12,7 +12,7 @@ import pyrogram.errors
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaDocument
 
 from config import env_vars, dbname
-from img2cbz.core import fld2cbz
+# from img2cbz.core import fld2cbz
 from img2pdf.core import fld2pdf, fld2thumb
 from plugins import *
 import os
@@ -58,14 +58,6 @@ plugin_dicts: Dict[str, Dict[str, MangaClient]] = {
         "NineManga": NineMangaClient(),        
         "LikeManga": LikeMangaClient(),
           },
-    "🇪🇸 ES": {
-        "MangaDex": MangaDexClient(language=("es-la", "es")),
-        "ManhuaKo": ManhuaKoClient(),
-        "TMO": TMOClient(),
-        "Mangatigre": MangatigreClient(),
-        "NineManga": NineMangaClient(language='es'),
-        "MangasIn": MangasInClient(),
-    },
     "🔞 18+": {
         "Manga18fx": Manga18fxClient(),
         "MangaDistrict": MangaDistrictClient(),
@@ -81,7 +73,7 @@ with open("tools/help_message.txt", "r") as f:
 
 class OutputOptions(enum.IntEnum):
     PDF = 1
-    CBZ = 2
+    #CBZ = 2
 
     def __and__(self, other):
         return self.value & other
@@ -435,7 +427,7 @@ async def send_manga_chapter(client: Client, chapter, chat_id):
 
     download = not chapter_file
     download = download or options & OutputOptions.PDF and not chapter_file.file_id
-    download = download or options & OutputOptions.CBZ and not chapter_file.cbz_id
+    # download = download or options & OutputOptions.CBZ and not chapter_file.cbz_id
     download = download and options & ((1 << len(OutputOptions)) - 1) != 0
 
     if download:
@@ -480,18 +472,6 @@ async def send_manga_chapter(client: Client, chapter, chat_id):
                                                        f'error.\n\n{error_caption}')
             media_docs.append(InputMediaDocument(pdf, thumb=thumb_path))
 
-    if options & OutputOptions.CBZ:
-        if chapter_file.cbz_id:
-            media_docs.append(InputMediaDocument(chapter_file.cbz_id))
-        else:
-            try:
-                cbz = await asyncio.get_running_loop().run_in_executor(None, fld2cbz, pictures_folder, ch_name)
-            except Exception as e:
-                logger.exception(f'Error creating cbz for {chapter.name} - {chapter.manga.name}\n{e}')
-                return await client.send_message(chat_id, f'There was an error making the cbz for this chapter. '
-                                                       f'Forward this message to the bot group to report the '
-                                                       f'error.\n\n{error_caption}')
-            media_docs.append(InputMediaDocument(cbz, thumb=thumb_path))
 
     if len(media_docs) == 0:
         messages: list[Message] = await retry_on_flood(client.send_message)(chat_id, success_caption)
@@ -512,10 +492,7 @@ async def send_manga_chapter(client: Client, chapter, chat_id):
             if message.document.file_name.endswith('.pdf'):
                 chapter_file.file_id = message.document.file_id
                 chapter_file.file_unique_id = message.document.file_unique_id
-            elif message.document.file_name.endswith('.cbz'):
-                chapter_file.cbz_id = message.document.file_id
-                chapter_file.cbz_unique_id = message.document.file_unique_id
-
+                
     if download:
         shutil.rmtree(pictures_folder, ignore_errors=True)
         await db.add(chapter_file)
