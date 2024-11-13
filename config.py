@@ -1,12 +1,12 @@
 env_vars = {
   # Get From my.telegram.org
-  "API_HASH": "a1bcb2e0191095a0758e29280cf55933",
+  "API_HASH": "057fd0be9d7c38526b143c582bceb24b",
   # Get From my.telegram.org
-  "API_ID": "23678651",
+  "API_ID": "20445873",
   #Get For @BotFather
-  "BOT_TOKEN": "7817283258:AAHgo53ZYNPXItvUfp2fKhGVsoM_7cO5apc",
+  "BOT_TOKEN": "7885135779:AAFJZZAiRjU6tc0Mx8j2vPnmrzreCLBNhlI",
   # Get For tembo.io
-  "DATABASE_URL_PRIMARY": "postgresql://postgres:rhf04OpB0SbaE2Yw@inversely-immaculate-oryx.data-1.use1.tembo.io:5432/postgres",
+  "DATABASE_URL_PRIMARY": "postgresql://postgres:4NQDGksWwMhyfcP5@delicately-purposeful-hen.data-1.apse1.tembo.io:5432/postgres",
   # Logs Channel Username Without @
   "CACHE_CHANNEL": "Dump2075",
   # Force Subs Channel username without @
